@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anamka Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="made-in-india">
+        <marquee behavior="scroll" direction="left">Made in India with ❤️ - Proudly Indian</marquee>
+    </div>
+
+    <header>
+        <div class="namaste-container">
+            <div class="namaste">नमस्ते World — Let’s Code the Future</div>
+            
+        </div>
+        
+        <div class="auth-buttons" id="authButtons">
+            <button class="login-btn" onclick="openLoginModal()">Log in</button>
+            <button class="signup-btn" onclick="openSignupModal()">Sign up</button>
+        </div>
+        <div class="auth-buttons" id="userButtons" style="display: none;">
+            <button class="profile-btn" onclick="openProfileModal()">My Profile</button>
+            <button class="logout-btn" onclick="logout()">Log out</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="logo">
+            <img src="Leonardo_Phoenix_10_A_mesmerizing_vibrantly_colored_photograph_1.jpg" alt="Anamka Logo">
+        </div>
+        
+        <div class="content">
+            <h1>Meet Anamka</h1>
+            <p>Your intelligent AI assistant designed to understand, learn, and help you accomplish more with less effort.</p>
+            <p>Anamka combines advanced natural language processing with deep learning to provide accurate, helpful, and context-aware responses to your questions.</p>
+            <!-- <button class="cta-button" id="tryButton" onclick="tryChatbot()">Try Anamka Now</button> -->
+             <a href="https://cdn.botpress.cloud/webchat/v2.4/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/25/10/20250425100754-BKPW6R84.json" class="cta-button" style="text-decoration: none;">Try Anamka now </a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Smart Conversations</h3>
+                <p>Anamka understands context and remembers your previous interactions for more meaningful conversations.</p>
+            </div>
+            <div class="feature">
+                <h3>Knowledge Base</h3>
+                <p>Access a vast knowledge base that spans multiple domains from science to culture.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Availability</h3>
+                <p>Get assistance anytime, anywhere with our always-available AI chatbot.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Anamka AI. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="login-container" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Log in to Anamka</h2>
+                <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email or username</label>
+                    <input type="text" id="loginEmail" name="email" required>
+                    <div class="error-message" id="loginEmailError">Please enter a valid email or username</div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                    <div class="error-message" id="loginPasswordError">Password is required</div>
+                </div>
+                <button type="submit">Continue</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="signup-link">
+                Don't have an account? <a onclick="closeLoginModal(); openSignupModal();">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="signup-container" id="signupModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Create your account</h2>
+                <button class="close-btn" onclick="closeSignupModal()">&times;</button>
+            </div>
+            <div class="social-buttons">
+                <button class="social-btn" onclick="socialSignup('google')">
+                    <img src="google.webp" alt="Google logo"> Continue with Google
+                </button>
+                <button class="social-btn" onclick="socialSignup('microsoft')">
+                    <img src="microsof.png" alt="Microsoft logo"> Continue with Microsoft
+                </button>
+            </div>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupEmail">Email address</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                    <div class="error-message" id="signupEmailError">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="signupName">Full name</label>
+                    <input type="text" id="signupName" name="name" required>
+                    <div class="error-message" id="signupNameError">Name is required</div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" required>
+                    <div class="error-message" id="signupPasswordError">Password must be at least 8 characters</div>
+                </div>
+                <button type="submit">Sign up</button>
+            </form>
+            
+            <div class="terms">
+                By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            </div>
+            
+            <div class="login-link">
+                Already have an account? <a onclick="closeSignupModal(); openLoginModal();">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-container" id="profileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Your Profile</h2>
+                <button class="close-btn" onclick="closeProfileModal()">&times;</button>
+            </div>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="nickname">Nickname</label>
+                    <input type="text" id="nickname" name="nickname">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="interests">Field of Interest</label>
+                    <select id="interests" name="interests">
+                        <option value="">Select interest</option>
+                        <option value="technology">Technology</option>
+                        <option value="science">Science</option>
+                        <option value="arts">Arts</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+                <button type="submit">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Alert -->
+    <div class="auth-alert" id="authAlert"></div>
+
+    <script>
+        // Check if user is logged in
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        let userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        
+        // Update UI based on login status
+        function updateAuthUI() {
+            const authButtons = document.getElementById('authButtons');
+            const userButtons = document.getElementById('userButtons');
+            
+            if (isLoggedIn) {
+                authButtons.style.display = 'none';
+                userButtons.style.display = 'flex';
+            } else {
+                authButtons.style.display = 'flex';
+                userButtons.style.display = 'none';
+            }
+        }
+        
+        // Initialize UI
+        updateAuthUI();
+        
+        // Modal functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginForm').reset();
+            document.getElementById('loginEmailError').style.display = 'none';
+            document.getElementById('loginPasswordError').style.display = 'none';
+        }
+        
+        function openSignupModal() {
+            document.getElementById('signupModal').style.display = 'flex';
+        }
+        
+        function closeSignupModal() {
+            document.getElementById('signupModal').style.display = 'none';
+            document.getElementById('signupForm').reset();
+            document.getElementById('signupEmailError').style.display = 'none';
+            document.getElementById('signupNameError').style.display = 'none';
+            document.getElementById('signupPasswordError').style.display = 'none';
+        }
+        
+        function openProfileModal() {
+            // Fill form with existing data if available
+            if (userData.nickname) document.getElementById('nickname').value = userData.nickname;
+            if (userData.gender) document.getElementById('gender').value = userData.gender;
+            if (userData.interests) document.getElementById('interests').value = userData.interests;
+            if (userData.occupation) document.getElementById('occupation').value = userData.occupation;
+            
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+        
+        function closeProfileModal() {
+            document.getElementById('profileModal').style.display = 'none';
+        }
+        
+        // Show alert message
+        function showAlert(message) {
+            const alert = document.getElementById('authAlert');
+            alert.textContent = message;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error messages
+            document.getElementById('loginEmailError').style.display = 'none';
+            document.getElementById('loginPasswordError').style.display = 'none';
+            
+            // Get form values
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            
+            // Basic validation
+            let isValid = true;
+            
+            if (!email) {
+                document.getElementById('loginEmailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password) {
+                document.getElementById('loginPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // If valid, simulate login
+            if (isValid) {
+                // Store login status
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userData', JSON.stringify({
+                    email: email,
+                    name: email.split('@')[0] // Default name from email
+                }));
+                
+                isLoggedIn = true;
+                userData = { email: email, name: email.split('@')[0] };
+                
+                // Close modal and update UI
+                closeLoginModal();
+                updateAuthUI();
+                showAlert('Login successful!');
+            }
+        });
+        
+        // Signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error messages
+            document.getElementById('signupEmailError').style.display = 'none';
+            document.getElementById('signupNameError').style.display = 'none';
+            document.getElementById('signupPasswordError').style.display = 'none';
+            
+            // Get form values
+            const email = document.getElementById('signupEmail').value.trim();
+            const name = document.getElementById('signupName').value.trim();
+            const password = document.getElementById('signupPassword').value.trim();
+            
+            // Basic validation
+            let isValid = true;
+            
+            if (!email || !email.includes('@')) {
+                document.getElementById('signupEmailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!name) {
+                document.getElementById('signupNameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password || password.length < 8) {
+                document.getElementById('signupPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // If valid, simulate signup
+            if (isValid) {
+                // Store login status and user data
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userData', JSON.stringify({
+                    email: email,
+                    name: name
+                }));
+                
+                isLoggedIn = true;
+                userData = { email: email, name: name };
+                
+                // Close modal and update UI
+                closeSignupModal();
+                updateAuthUI();
+                showAlert('Sign up successful!');
+            }
+        });
+        
+        // Social signup
+        function socialSignup(provider) {
+            // Simulate social login
+            const fakeEmail = `user_${Math.floor(Math.random() * 10000)}@${provider}.com`;
+            const fakeName = `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`;
+            
+            // Store login status and user data
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userData', JSON.stringify({
+                email: fakeEmail,
+                name: fakeName
+            }));
+            
+            isLoggedIn = true;
+            userData = { email: fakeEmail, name: fakeName };
+            
+            // Close modal and update UI
+            closeSignupModal();
+            updateAuthUI();
+            showAlert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} sign up successful!`);
+        }
+        
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get updated profile data
+            const updatedData = {
+                ...userData,
+                nickname: document.getElementById('nickname').value.trim(),
+                gender: document.getElementById('gender').value,
+                interests: document.getElementById('interests').value,
+                occupation: document.getElementById('occupation').value.trim()
+            };
+            
+            // Save updated data
+            localStorage.setItem('userData', JSON.stringify(updatedData));
+            userData = updatedData;
+            
+            // Close modal and show confirmation
+            closeProfileModal();
+            showAlert('Profile updated successfully!');
+        });
+        
+        // Logout function
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            isLoggedIn = false;
+            updateAuthUI();
+            showAlert('Logged out successfully!');
+        }
+        
+        // Try chatbot button
+        function tryChatbot() {
+            if (isLoggedIn) {
+                window.location.href = '/chatbot';
+            } else {
+                showAlert('Please log in to use Anamka');
+                openLoginModal();
+            }
+        }
+    </script>
+</body>
+</html>
